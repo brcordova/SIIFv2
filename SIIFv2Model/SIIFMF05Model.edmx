@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SIIFMF05Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Banco">
+          <Key>
+            <PropertyRef Name="Banco_Id" />
+          </Key>
+          <Property Name="Banco_Id" Type="smallint" Nullable="false" />
+          <Property Name="Banco_Dsc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Banco_Dsc_Corta" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Banco_Clave_CNBV" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="Banco_Opera_Digito" Type="bit" Nullable="false" />
+          <Property Name="Banco_Clave_Financiera" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Banco_Cuenta_Contable" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Banco_Habilitado" Type="bit" Nullable="false" />
+          <Property Name="Banco_Permite_ModCtaCientes" Type="bit" Nullable="false" />
+          <Property Name="Banco_Certifica_CuentaClientes" Type="bit" Nullable="false" />
+          <Property Name="Banco_GeneraLayout_CertificacionCta" Type="bit" Nullable="false" />
+          <Property Name="Banco_ConfirmaLayout_CertificacionCta" Type="bit" Nullable="false" />
+          <Property Name="Banco_Longitud_Cuenta" Type="smallint" Nullable="false" />
+          <Property Name="Banco_Maneja_Domiciliacion" Type="bit" Nullable="false" />
+          <Property Name="Banco_RequiereAltaBaja_Domiciliacion" Type="bit" Nullable="false" />
+          <Property Name="Banco_Clave_Banxico" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cuenta">
+          <Key>
+            <PropertyRef Name="Banco_Id" />
+            <PropertyRef Name="Cuenta_Id" />
+          </Key>
+          <Property Name="Banco_Id" Type="smallint" Nullable="false" />
+          <Property Name="Cuenta_Id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Tipo_Cuenta_Banco_Id" Type="smallint" Nullable="false" />
+          <Property Name="Cuenta_Dsc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cuenta_ABA" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Cuenta_Responsable" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Divisa_Id" Type="smallint" Nullable="false" />
+          <Property Name="Cuenta_Sucursal" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cuenta_Localidad" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Pais_Id" Type="smallint" Nullable="false" />
+          <Property Name="Cuenta_Gerente" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cuenta_Telefono" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cuenta_Fax" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cuenta_Email" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cuenta_Ejecutivo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cuenta_Tel_Ejecutivo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cuenta_Fax_Ejecutivo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cuenta_Email_Ejecutivo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cuenta_Ref_1" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cuenta_Ref_2" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cuenta_Ref_3" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cuenta_Ref_4" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cuenta_Ref_Valor_1" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cuenta_Ref_Valor_2" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cuenta_Ref_Valor_3" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cuenta_Ref_Valor_4" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cuenta_Clave_1" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cuenta_Clave_2" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cuenta_Clave_3" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cuenta_Clave_4" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cuenta_Clave_Valor_1" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cuenta_Clave_Valor_2" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cuenta_Clave_Valor_3" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cuenta_Clave_Valor_4" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cuenta_SaldoIni_Anio" Type="float" Nullable="false" />
+          <Property Name="Cuenta_Ingreso_Anio" Type="float" Nullable="false" />
+          <Property Name="Cuenta_Egreso_Anio" Type="float" Nullable="false" />
+          <Property Name="Cuenta_SaldoIni_Mes" Type="float" Nullable="false" />
+          <Property Name="Cuenta_Ingreso_Mes" Type="float" Nullable="false" />
+          <Property Name="Cuenta_Egreso_Mes" Type="float" Nullable="false" />
+          <Property Name="Cuenta_SaldoIni_Dia" Type="float" Nullable="false" />
+          <Property Name="Cuenta_Ingreso_Dia" Type="float" Nullable="false" />
+          <Property Name="Cuenta_Egreso_Dia" Type="float" Nullable="false" />
+          <Property Name="Cuenta_Plaza" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Cuenta_Considera_Plaza" Type="bit" Nullable="false" />
+          <Property Name="Tipo_Cuenta_Id" Type="smallint" Nullable="false" />
+          <Property Name="Sts_Cuenta_Id" Type="smallint" Nullable="false" />
+          <Property Name="Cuenta_Emite_Cheques" Type="bit" Nullable="false" />
+          <Property Name="Cuenta_Prioridad" Type="tinyint" Nullable="false" />
+          <Property Name="Cuenta_Cuenta_Contable" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Integridad" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Cuenta_Responsable_Email" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="XFKCuenta_Banco">
+          <End Role="Banco" Type="Self.Banco" Multiplicity="1" />
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banco">
+              <PropertyRef Name="Banco_Id" />
+            </Principal>
+            <Dependent Role="Cuenta">
+              <PropertyRef Name="Banco_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SIIFMF05ModelStoreContainer">
+          <EntitySet Name="Banco" EntityType="Self.Banco" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cuenta" EntityType="Self.Cuenta" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="XFKCuenta_Banco" Association="Self.XFKCuenta_Banco">
+            <End Role="Banco" EntitySet="Banco" />
+            <End Role="Cuenta" EntitySet="Cuenta" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SIIFMF05Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cuenta">
+          <Key>
+            <PropertyRef Name="Banco_Id" />
+            <PropertyRef Name="Cuenta_Id" />
+          </Key>
+          <Property Name="Banco_Id" Type="Int16" Nullable="false" />
+          <Property Name="Cuenta_Id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tipo_Cuenta_Banco_Id" Type="Int16" Nullable="false" />
+          <Property Name="Cuenta_Dsc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_ABA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_Responsable" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Divisa_Id" Type="Int16" Nullable="false" />
+          <Property Name="Cuenta_Sucursal" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_Localidad" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pais_Id" Type="Int16" Nullable="false" />
+          <Property Name="Cuenta_Gerente" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_Telefono" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_Fax" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_Ejecutivo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_Tel_Ejecutivo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_Fax_Ejecutivo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_Email_Ejecutivo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_Ref_1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_Ref_2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_Ref_3" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_Ref_4" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_Ref_Valor_1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_Ref_Valor_2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_Ref_Valor_3" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_Ref_Valor_4" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_Clave_1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_Clave_2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_Clave_3" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_Clave_4" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_Clave_Valor_1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_Clave_Valor_2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_Clave_Valor_3" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_Clave_Valor_4" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_SaldoIni_Anio" Type="Double" Nullable="false" />
+          <Property Name="Cuenta_Ingreso_Anio" Type="Double" Nullable="false" />
+          <Property Name="Cuenta_Egreso_Anio" Type="Double" Nullable="false" />
+          <Property Name="Cuenta_SaldoIni_Mes" Type="Double" Nullable="false" />
+          <Property Name="Cuenta_Ingreso_Mes" Type="Double" Nullable="false" />
+          <Property Name="Cuenta_Egreso_Mes" Type="Double" Nullable="false" />
+          <Property Name="Cuenta_SaldoIni_Dia" Type="Double" Nullable="false" />
+          <Property Name="Cuenta_Ingreso_Dia" Type="Double" Nullable="false" />
+          <Property Name="Cuenta_Egreso_Dia" Type="Double" Nullable="false" />
+          <Property Name="Cuenta_Plaza" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta_Considera_Plaza" Type="Boolean" Nullable="false" />
+          <Property Name="Tipo_Cuenta_Id" Type="Int16" Nullable="false" />
+          <Property Name="Sts_Cuenta_Id" Type="Int16" Nullable="false" />
+          <Property Name="Cuenta_Emite_Cheques" Type="Boolean" Nullable="false" />
+          <Property Name="Cuenta_Prioridad" Type="Byte" Nullable="false" />
+          <Property Name="Cuenta_Cuenta_Contable" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Integridad" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Cuenta_Responsable_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Banco" Relationship="SIIFMF05Model.XFKCuenta_Banco" FromRole="Cuenta" ToRole="Banco" />
+        </EntityType>
+        <EntityContainer Name="SIIFMF05Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cuenta" EntityType="Self.Cuenta" />
+          <EntitySet Name="Banco" EntityType="SIIFMF05Model.Banco" />
+          <AssociationSet Name="XFKCuenta_Banco" Association="SIIFMF05Model.XFKCuenta_Banco">
+            <End Role="Banco" EntitySet="Banco" />
+            <End Role="Cuenta" EntitySet="Cuenta" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Banco">
+          <Key>
+            <PropertyRef Name="Banco_Id" />
+          </Key>
+          <Property Name="Banco_Id" Type="Int16" Nullable="false" />
+          <Property Name="Banco_Dsc" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Banco_Dsc_Corta" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Banco_Clave_CNBV" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Banco_Opera_Digito" Type="Boolean" Nullable="false" />
+          <Property Name="Banco_Clave_Financiera" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Banco_Cuenta_Contable" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Banco_Habilitado" Type="Boolean" Nullable="false" />
+          <Property Name="Banco_Permite_ModCtaCientes" Type="Boolean" Nullable="false" />
+          <Property Name="Banco_Certifica_CuentaClientes" Type="Boolean" Nullable="false" />
+          <Property Name="Banco_GeneraLayout_CertificacionCta" Type="Boolean" Nullable="false" />
+          <Property Name="Banco_ConfirmaLayout_CertificacionCta" Type="Boolean" Nullable="false" />
+          <Property Name="Banco_Longitud_Cuenta" Type="Int16" Nullable="false" />
+          <Property Name="Banco_Maneja_Domiciliacion" Type="Boolean" Nullable="false" />
+          <Property Name="Banco_RequiereAltaBaja_Domiciliacion" Type="Boolean" Nullable="false" />
+          <Property Name="Banco_Clave_Banxico" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cuenta" Relationship="SIIFMF05Model.XFKCuenta_Banco" FromRole="Banco" ToRole="Cuenta" />
+        </EntityType>
+        <Association Name="XFKCuenta_Banco">
+          <End Type="SIIFMF05Model.Banco" Role="Banco" Multiplicity="1" />
+          <End Type="SIIFMF05Model.Cuenta" Role="Cuenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banco">
+              <PropertyRef Name="Banco_Id" />
+            </Principal>
+            <Dependent Role="Cuenta">
+              <PropertyRef Name="Banco_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SIIFMF05ModelStoreContainer" CdmEntityContainer="SIIFMF05Entities">
+          <EntitySetMapping Name="Cuenta">
+            <EntityTypeMapping TypeName="SIIFMF05Model.Cuenta">
+              <MappingFragment StoreEntitySet="Cuenta">
+                <ScalarProperty Name="Banco_Id" ColumnName="Banco_Id" />
+                <ScalarProperty Name="Cuenta_Id" ColumnName="Cuenta_Id" />
+                <ScalarProperty Name="Tipo_Cuenta_Banco_Id" ColumnName="Tipo_Cuenta_Banco_Id" />
+                <ScalarProperty Name="Cuenta_Dsc" ColumnName="Cuenta_Dsc" />
+                <ScalarProperty Name="Cuenta_ABA" ColumnName="Cuenta_ABA" />
+                <ScalarProperty Name="Cuenta_Responsable" ColumnName="Cuenta_Responsable" />
+                <ScalarProperty Name="Divisa_Id" ColumnName="Divisa_Id" />
+                <ScalarProperty Name="Cuenta_Sucursal" ColumnName="Cuenta_Sucursal" />
+                <ScalarProperty Name="Cuenta_Localidad" ColumnName="Cuenta_Localidad" />
+                <ScalarProperty Name="Pais_Id" ColumnName="Pais_Id" />
+                <ScalarProperty Name="Cuenta_Gerente" ColumnName="Cuenta_Gerente" />
+                <ScalarProperty Name="Cuenta_Telefono" ColumnName="Cuenta_Telefono" />
+                <ScalarProperty Name="Cuenta_Fax" ColumnName="Cuenta_Fax" />
+                <ScalarProperty Name="Cuenta_Email" ColumnName="Cuenta_Email" />
+                <ScalarProperty Name="Cuenta_Ejecutivo" ColumnName="Cuenta_Ejecutivo" />
+                <ScalarProperty Name="Cuenta_Tel_Ejecutivo" ColumnName="Cuenta_Tel_Ejecutivo" />
+                <ScalarProperty Name="Cuenta_Fax_Ejecutivo" ColumnName="Cuenta_Fax_Ejecutivo" />
+                <ScalarProperty Name="Cuenta_Email_Ejecutivo" ColumnName="Cuenta_Email_Ejecutivo" />
+                <ScalarProperty Name="Cuenta_Ref_1" ColumnName="Cuenta_Ref_1" />
+                <ScalarProperty Name="Cuenta_Ref_2" ColumnName="Cuenta_Ref_2" />
+                <ScalarProperty Name="Cuenta_Ref_3" ColumnName="Cuenta_Ref_3" />
+                <ScalarProperty Name="Cuenta_Ref_4" ColumnName="Cuenta_Ref_4" />
+                <ScalarProperty Name="Cuenta_Ref_Valor_1" ColumnName="Cuenta_Ref_Valor_1" />
+                <ScalarProperty Name="Cuenta_Ref_Valor_2" ColumnName="Cuenta_Ref_Valor_2" />
+                <ScalarProperty Name="Cuenta_Ref_Valor_3" ColumnName="Cuenta_Ref_Valor_3" />
+                <ScalarProperty Name="Cuenta_Ref_Valor_4" ColumnName="Cuenta_Ref_Valor_4" />
+                <ScalarProperty Name="Cuenta_Clave_1" ColumnName="Cuenta_Clave_1" />
+                <ScalarProperty Name="Cuenta_Clave_2" ColumnName="Cuenta_Clave_2" />
+                <ScalarProperty Name="Cuenta_Clave_3" ColumnName="Cuenta_Clave_3" />
+                <ScalarProperty Name="Cuenta_Clave_4" ColumnName="Cuenta_Clave_4" />
+                <ScalarProperty Name="Cuenta_Clave_Valor_1" ColumnName="Cuenta_Clave_Valor_1" />
+                <ScalarProperty Name="Cuenta_Clave_Valor_2" ColumnName="Cuenta_Clave_Valor_2" />
+                <ScalarProperty Name="Cuenta_Clave_Valor_3" ColumnName="Cuenta_Clave_Valor_3" />
+                <ScalarProperty Name="Cuenta_Clave_Valor_4" ColumnName="Cuenta_Clave_Valor_4" />
+                <ScalarProperty Name="Cuenta_SaldoIni_Anio" ColumnName="Cuenta_SaldoIni_Anio" />
+                <ScalarProperty Name="Cuenta_Ingreso_Anio" ColumnName="Cuenta_Ingreso_Anio" />
+                <ScalarProperty Name="Cuenta_Egreso_Anio" ColumnName="Cuenta_Egreso_Anio" />
+                <ScalarProperty Name="Cuenta_SaldoIni_Mes" ColumnName="Cuenta_SaldoIni_Mes" />
+                <ScalarProperty Name="Cuenta_Ingreso_Mes" ColumnName="Cuenta_Ingreso_Mes" />
+                <ScalarProperty Name="Cuenta_Egreso_Mes" ColumnName="Cuenta_Egreso_Mes" />
+                <ScalarProperty Name="Cuenta_SaldoIni_Dia" ColumnName="Cuenta_SaldoIni_Dia" />
+                <ScalarProperty Name="Cuenta_Ingreso_Dia" ColumnName="Cuenta_Ingreso_Dia" />
+                <ScalarProperty Name="Cuenta_Egreso_Dia" ColumnName="Cuenta_Egreso_Dia" />
+                <ScalarProperty Name="Cuenta_Plaza" ColumnName="Cuenta_Plaza" />
+                <ScalarProperty Name="Cuenta_Considera_Plaza" ColumnName="Cuenta_Considera_Plaza" />
+                <ScalarProperty Name="Tipo_Cuenta_Id" ColumnName="Tipo_Cuenta_Id" />
+                <ScalarProperty Name="Sts_Cuenta_Id" ColumnName="Sts_Cuenta_Id" />
+                <ScalarProperty Name="Cuenta_Emite_Cheques" ColumnName="Cuenta_Emite_Cheques" />
+                <ScalarProperty Name="Cuenta_Prioridad" ColumnName="Cuenta_Prioridad" />
+                <ScalarProperty Name="Cuenta_Cuenta_Contable" ColumnName="Cuenta_Cuenta_Contable" />
+                <ScalarProperty Name="Integridad" ColumnName="Integridad" />
+                <ScalarProperty Name="Cuenta_Responsable_Email" ColumnName="Cuenta_Responsable_Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Banco">
+            <EntityTypeMapping TypeName="SIIFMF05Model.Banco">
+              <MappingFragment StoreEntitySet="Banco">
+                <ScalarProperty Name="Banco_Clave_Banxico" ColumnName="Banco_Clave_Banxico" />
+                <ScalarProperty Name="Banco_RequiereAltaBaja_Domiciliacion" ColumnName="Banco_RequiereAltaBaja_Domiciliacion" />
+                <ScalarProperty Name="Banco_Maneja_Domiciliacion" ColumnName="Banco_Maneja_Domiciliacion" />
+                <ScalarProperty Name="Banco_Longitud_Cuenta" ColumnName="Banco_Longitud_Cuenta" />
+                <ScalarProperty Name="Banco_ConfirmaLayout_CertificacionCta" ColumnName="Banco_ConfirmaLayout_CertificacionCta" />
+                <ScalarProperty Name="Banco_GeneraLayout_CertificacionCta" ColumnName="Banco_GeneraLayout_CertificacionCta" />
+                <ScalarProperty Name="Banco_Certifica_CuentaClientes" ColumnName="Banco_Certifica_CuentaClientes" />
+                <ScalarProperty Name="Banco_Permite_ModCtaCientes" ColumnName="Banco_Permite_ModCtaCientes" />
+                <ScalarProperty Name="Banco_Habilitado" ColumnName="Banco_Habilitado" />
+                <ScalarProperty Name="Banco_Cuenta_Contable" ColumnName="Banco_Cuenta_Contable" />
+                <ScalarProperty Name="Banco_Clave_Financiera" ColumnName="Banco_Clave_Financiera" />
+                <ScalarProperty Name="Banco_Opera_Digito" ColumnName="Banco_Opera_Digito" />
+                <ScalarProperty Name="Banco_Clave_CNBV" ColumnName="Banco_Clave_CNBV" />
+                <ScalarProperty Name="Banco_Dsc_Corta" ColumnName="Banco_Dsc_Corta" />
+                <ScalarProperty Name="Banco_Dsc" ColumnName="Banco_Dsc" />
+                <ScalarProperty Name="Banco_Id" ColumnName="Banco_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

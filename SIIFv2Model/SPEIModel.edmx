@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SPEIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Banco">
+          <Key>
+            <PropertyRef Name="Banco_Id" />
+          </Key>
+          <Property Name="Banco_Id" Type="smallint" Nullable="false" />
+          <Property Name="Banco_Dsc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Banco_Dsc_Corta" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Banco_Clave_CNBV" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="Banco_Opera_Digito" Type="bit" Nullable="false" />
+          <Property Name="Banco_Clave_Financiera" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Banco_Cuenta_Contable" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Banco_Habilitado" Type="bit" Nullable="false" />
+          <Property Name="Banco_Permite_ModCtaCientes" Type="bit" Nullable="false" />
+          <Property Name="Banco_Certifica_CuentaClientes" Type="bit" Nullable="false" />
+          <Property Name="Banco_GeneraLayout_CertificacionCta" Type="bit" Nullable="false" />
+          <Property Name="Banco_ConfirmaLayout_CertificacionCta" Type="bit" Nullable="false" />
+          <Property Name="Banco_Longitud_Cuenta" Type="smallint" Nullable="false" />
+          <Property Name="Banco_Maneja_Domiciliacion" Type="bit" Nullable="false" />
+          <Property Name="Banco_RequiereAltaBaja_Domiciliacion" Type="bit" Nullable="false" />
+          <Property Name="Banco_Clave_Banxico" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Divisa">
+          <Key>
+            <PropertyRef Name="Divisa_Id" />
+          </Key>
+          <Property Name="Divisa_Id" Type="smallint" Nullable="false" />
+          <Property Name="Divisa_Dsc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Divisa_Dsc_Corta" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nivel">
+          <Key>
+            <PropertyRef Name="Nivel_Id" />
+          </Key>
+          <Property Name="Nivel_Id" Type="smallint" Nullable="false" />
+          <Property Name="Nivel_Dsc" Type="varchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Usuario_Id" />
+          </Key>
+          <Property Name="Usuario_Id" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="Nivel_Id" Type="smallint" Nullable="false" />
+          <Property Name="Usuario_Dsc" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Usuario_Password" Type="varchar" MaxLength="255" />
+          <Property Name="Usuario_Fecha_Pwd" Type="datetime" Nullable="false" />
+          <Property Name="Usuario_Area" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Usuario_Puesto" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Usuario_Fecha_UltAcceso" Type="datetime" Nullable="false" />
+          <Property Name="Usuario_Inactivo" Type="bit" Nullable="false" />
+          <Property Name="Usuario_No_Intentos" Type="tinyint" Nullable="false" />
+          <Property Name="Usuario_Id_Windows" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Sucursal_Id" Type="smallint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Usuario_Nivel">
+          <End Role="Nivel" Type="Self.Nivel" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nivel">
+              <PropertyRef Name="Nivel_Id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="Nivel_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_s_Bancos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="SPEIModelStoreContainer">
+          <EntitySet Name="Banco" EntityType="Self.Banco" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Divisa" EntityType="Self.Divisa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nivel" EntityType="Self.Nivel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Usuario_Nivel" Association="Self.FK_Usuario_Nivel">
+            <End Role="Nivel" EntitySet="Nivel" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SPEIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Banco">
+          <Key>
+            <PropertyRef Name="Banco_Id" />
+          </Key>
+          <Property Name="Banco_Id" Type="Int16" Nullable="false" />
+          <Property Name="Banco_Dsc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Banco_Dsc_Corta" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Banco_Clave_CNBV" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Banco_Opera_Digito" Type="Boolean" Nullable="false" />
+          <Property Name="Banco_Clave_Financiera" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Banco_Cuenta_Contable" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Banco_Habilitado" Type="Boolean" Nullable="false" />
+          <Property Name="Banco_Permite_ModCtaCientes" Type="Boolean" Nullable="false" />
+          <Property Name="Banco_Certifica_CuentaClientes" Type="Boolean" Nullable="false" />
+          <Property Name="Banco_GeneraLayout_CertificacionCta" Type="Boolean" Nullable="false" />
+          <Property Name="Banco_ConfirmaLayout_CertificacionCta" Type="Boolean" Nullable="false" />
+          <Property Name="Banco_Longitud_Cuenta" Type="Int16" Nullable="false" />
+          <Property Name="Banco_Maneja_Domiciliacion" Type="Boolean" Nullable="false" />
+          <Property Name="Banco_RequiereAltaBaja_Domiciliacion" Type="Boolean" Nullable="false" />
+          <Property Name="Banco_Clave_Banxico" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Divisa">
+          <Key>
+            <PropertyRef Name="Divisa_Id" />
+          </Key>
+          <Property Name="Divisa_Id" Type="Int16" Nullable="false" />
+          <Property Name="Divisa_Dsc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Divisa_Dsc_Corta" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nivel">
+          <Key>
+            <PropertyRef Name="Nivel_Id" />
+          </Key>
+          <Property Name="Nivel_Id" Type="Int16" Nullable="false" />
+          <Property Name="Nivel_Dsc" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_Nivel" FromRole="Nivel" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Usuario_Id" />
+          </Key>
+          <Property Name="Usuario_Id" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nivel_Id" Type="Int16" Nullable="false" />
+          <Property Name="Usuario_Dsc" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Usuario_Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Usuario_Fecha_Pwd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Usuario_Area" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Usuario_Puesto" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Usuario_Fecha_UltAcceso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Usuario_Inactivo" Type="Boolean" Nullable="false" />
+          <Property Name="Usuario_No_Intentos" Type="Byte" Nullable="false" />
+          <Property Name="Usuario_Id_Windows" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sucursal_Id" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Nivel" Relationship="Self.FK_Usuario_Nivel" FromRole="Usuario" ToRole="Nivel" />
+        </EntityType>
+        <Association Name="FK_Usuario_Nivel">
+          <End Role="Nivel" Type="Self.Nivel" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nivel">
+              <PropertyRef Name="Nivel_Id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="Nivel_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SPEIEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Banco" EntityType="Self.Banco" />
+          <EntitySet Name="Divisa" EntityType="Self.Divisa" />
+          <EntitySet Name="Nivel" EntityType="Self.Nivel" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_Usuario_Nivel" Association="Self.FK_Usuario_Nivel">
+            <End Role="Nivel" EntitySet="Nivel" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <FunctionImport Name="sp_s_Bancos" ReturnType="Collection(SPEIModel.sp_s_Bancos_Result)" />
+        </EntityContainer>
+        <ComplexType Name="sp_s_Bancos_Result">
+          <Property Type="Int16" Name="CampoId" Nullable="false" />
+          <Property Type="String" Name="NombreCampo" Nullable="false" MaxLength="15" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SPEIModelStoreContainer" CdmEntityContainer="SPEIEntities">
+          <EntitySetMapping Name="Banco">
+            <EntityTypeMapping TypeName="SPEIModel.Banco">
+              <MappingFragment StoreEntitySet="Banco">
+                <ScalarProperty Name="Banco_Id" ColumnName="Banco_Id" />
+                <ScalarProperty Name="Banco_Dsc" ColumnName="Banco_Dsc" />
+                <ScalarProperty Name="Banco_Dsc_Corta" ColumnName="Banco_Dsc_Corta" />
+                <ScalarProperty Name="Banco_Clave_CNBV" ColumnName="Banco_Clave_CNBV" />
+                <ScalarProperty Name="Banco_Opera_Digito" ColumnName="Banco_Opera_Digito" />
+                <ScalarProperty Name="Banco_Clave_Financiera" ColumnName="Banco_Clave_Financiera" />
+                <ScalarProperty Name="Banco_Cuenta_Contable" ColumnName="Banco_Cuenta_Contable" />
+                <ScalarProperty Name="Banco_Habilitado" ColumnName="Banco_Habilitado" />
+                <ScalarProperty Name="Banco_Permite_ModCtaCientes" ColumnName="Banco_Permite_ModCtaCientes" />
+                <ScalarProperty Name="Banco_Certifica_CuentaClientes" ColumnName="Banco_Certifica_CuentaClientes" />
+                <ScalarProperty Name="Banco_GeneraLayout_CertificacionCta" ColumnName="Banco_GeneraLayout_CertificacionCta" />
+                <ScalarProperty Name="Banco_ConfirmaLayout_CertificacionCta" ColumnName="Banco_ConfirmaLayout_CertificacionCta" />
+                <ScalarProperty Name="Banco_Longitud_Cuenta" ColumnName="Banco_Longitud_Cuenta" />
+                <ScalarProperty Name="Banco_Maneja_Domiciliacion" ColumnName="Banco_Maneja_Domiciliacion" />
+                <ScalarProperty Name="Banco_RequiereAltaBaja_Domiciliacion" ColumnName="Banco_RequiereAltaBaja_Domiciliacion" />
+                <ScalarProperty Name="Banco_Clave_Banxico" ColumnName="Banco_Clave_Banxico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Divisa">
+            <EntityTypeMapping TypeName="SPEIModel.Divisa">
+              <MappingFragment StoreEntitySet="Divisa">
+                <ScalarProperty Name="Divisa_Id" ColumnName="Divisa_Id" />
+                <ScalarProperty Name="Divisa_Dsc" ColumnName="Divisa_Dsc" />
+                <ScalarProperty Name="Divisa_Dsc_Corta" ColumnName="Divisa_Dsc_Corta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nivel">
+            <EntityTypeMapping TypeName="SPEIModel.Nivel">
+              <MappingFragment StoreEntitySet="Nivel">
+                <ScalarProperty Name="Nivel_Id" ColumnName="Nivel_Id" />
+                <ScalarProperty Name="Nivel_Dsc" ColumnName="Nivel_Dsc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="SPEIModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
+                <ScalarProperty Name="Nivel_Id" ColumnName="Nivel_Id" />
+                <ScalarProperty Name="Usuario_Dsc" ColumnName="Usuario_Dsc" />
+                <ScalarProperty Name="Usuario_Password" ColumnName="Usuario_Password" />
+                <ScalarProperty Name="Usuario_Fecha_Pwd" ColumnName="Usuario_Fecha_Pwd" />
+                <ScalarProperty Name="Usuario_Area" ColumnName="Usuario_Area" />
+                <ScalarProperty Name="Usuario_Puesto" ColumnName="Usuario_Puesto" />
+                <ScalarProperty Name="Usuario_Fecha_UltAcceso" ColumnName="Usuario_Fecha_UltAcceso" />
+                <ScalarProperty Name="Usuario_Inactivo" ColumnName="Usuario_Inactivo" />
+                <ScalarProperty Name="Usuario_No_Intentos" ColumnName="Usuario_No_Intentos" />
+                <ScalarProperty Name="Usuario_Id_Windows" ColumnName="Usuario_Id_Windows" />
+                <ScalarProperty Name="Sucursal_Id" ColumnName="Sucursal_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_s_Bancos" FunctionName="SPEIModel.Store.sp_s_Bancos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SPEIModel.sp_s_Bancos_Result">
+                <ScalarProperty Name="CampoId" ColumnName="CampoId" />
+                <ScalarProperty Name="NombreCampo" ColumnName="NombreCampo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

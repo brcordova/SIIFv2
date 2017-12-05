@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="18add1c0968e4f4f82a0e7be7d9dedd0" Name="Diagram1" ZoomLevel="42">
+        <EntityTypeShape EntityType="SIIFMF05Model.Cuenta" Width="1.5" PointX="5.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIIFMF05Model.Banco" Width="1.5" PointX="3.125" PointY="4" />
+        <AssociationConnector Association="SIIFMF05Model.XFKCuenta_Banco" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

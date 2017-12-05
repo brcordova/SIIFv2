@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "DepositosNoIdentificados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DepositosNoIdentificados</h2>
+
+@using (Html.BeginForm("CargarDepositosNoIdentificados","Home",FormMethod.Post,new{id="frm-DepNoIden"}))
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">Información personal</div>
+        <div class="panel-body">
+            <label class="form-label">Control</label>
+            @Html.TextBox("StudentName", null, new { @class = "form-control" })  
+            <p>@Html.DropDownList("SelectedFlavorId1", ViewBag.FlavorItems as List<SelectListItem>, htmlAttributes: new { @class = "form-control ddl" })</p>
+
+        </div>
+    </div>
+    
+}
